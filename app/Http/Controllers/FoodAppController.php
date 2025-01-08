@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\registration;
+use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
@@ -73,6 +74,16 @@ class FoodAppController extends Controller
         }
         
         return redirect()->to('beranda')->with('success', 'Login berhasil!');
+    }
+
+    public function apiShowFoods()
+    {
+        $foods = Food::all();
+
+        return response()->json([
+            'message' => 'Daftar makanan berhasil diambil',
+            'data' => $foods,
+        ]);
     }
     
 }
