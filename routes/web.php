@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FoodAppController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', [FoodAppController::class, 'signUp']);
-Route::get('/signin', [FoodAppController::class, 'signIn']);
-Route::post('/signin', [FoodAppController::class, 'check']);
-Route::resource('beranda', FoodAppController::class);
+Route::get('/', [UserController::class, 'signUp']);
+Route::get('/signin', [UserController::class, 'signIn']);
+Route::post('/signin', [UserController::class, 'check']);
+Route::resource('customer', UserController::class);
+Route::get('/resto', [UserController::class, 'resto']);
