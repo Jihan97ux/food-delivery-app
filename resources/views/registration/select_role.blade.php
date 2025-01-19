@@ -98,12 +98,12 @@
             <div class="role-options">
                 <label class="role-card">
                     <input type="radio" name="role" value="customer" style="display: none;" required>
-                    <img src="{{ asset('images/customer_inactive.png') }}" alt="Customer" class="inactive">
+                    <img src="{{ asset('foto/customer_inactive.png') }}" alt="Customer" class="inactive">
                     <span>Customer</span>
                 </label>
                 <label class="role-card">
                     <input type="radio" name="role" value="restaurant" style="display: none;" required>
-                    <img src="{{ asset('images/restaurant_inactive.png') }}" alt="Restaurant" class="inactive">
+                    <img src="{{ asset('foto/restaurant_inactive.png') }}" alt="Restaurant" class="inactive">
                     <span>Restaurant</span>
                 </label>
             </div>

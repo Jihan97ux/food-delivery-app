@@ -11,7 +11,7 @@
         <div class="bg-white rounded-lg shadow-lg p-8 w-96 text-center">
             <h2 class="text-orange-500 text-xl font-semibold mb-6">Welcome to Food For Everyone!</h2>
             @include('komponen.pesan')
-            <form action="{{ url('beranda') }}" method="POST">
+            <form action="{{ url('customer_store') }}" method="POST">
                 @csrf
                 <div class="flex justify-between gap-4 mb-4">
                     <input type="text" placeholder="First Name" name='nama_depan' value="{{ Session::get('nama_depan') }}" id="nama_depan"
@@ -26,7 +26,7 @@
                 <input type="password" placeholder="Password" name='password' value="{{ Session::get('password') }}" id="password"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-orange-400">
                 <p class="text-sm text-gray-600 mb-4">
-                    Have an account? <a href="{{ url('signin') }}" class="text-orange-500 hover:underline">Sign In</a>
+                    Have an account? <a href="{{ url('/') }}" class="text-orange-500 hover:underline">Sign In</a>
                 </p>
                 <button type="submit" name="submit"
                     class="w-full bg-orange-500 text-white py-2 rounded-full font-medium hover:bg-orange-600 transition">

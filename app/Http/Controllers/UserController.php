@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\registration;
+use App\Models\customer;
+use App\Models\restaurant;
 use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -15,11 +16,19 @@ class UserController extends Controller
     }
 
     public function show(){
-        return view('customer.foods');
+        
     }
 
-    public function signUp(){
-        return view('registration.signup');
+    public function signUp_cust(){
+        return view('registration.signup_cust');
+    }
+
+    public function signUp_resto(){
+        return view('registration.signup_resto');
+    }
+
+    public function show_selectRole(){
+        return view('registration.select_role');
     }
 
     public function signIn(){
@@ -30,7 +39,21 @@ class UserController extends Controller
         return view('resto.beranda_resto');
     }
 
-    public function store(Request $request){
+    public function selectRole(Request $request){
+        $role = $request->input('role');
+
+        if ($role === 'restaurant') {
+            return redirect()->to('restaurant_signup');
+        }
+
+        if ($role === 'customer') {
+            return redirect()->to('customer_signup');
+        }
+
+        return redirect()->back()->withErrors(['role' => 'Pilih role yang valid']);
+    }
+
+    public function cust_store(Request $request){
         Session::flash('nama_depan', $request->nama_depan);
         Session::flash('nama_belakang', $request->nama_belakang);
         Session::flash('tanggal_lahir', $request->tanggal_lahir);
@@ -41,7 +64,7 @@ class UserController extends Controller
             'nama_depan' => 'required|string|max:255',
             'nama_belakang' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
-            'email' => 'required|email|unique:registration,email|max:255',
+            'email' => 'required|email|unique:customers,email|max:255',
             'password' => 'required|string|min:8',
         ], [
             'email.required' => 'Email wajib diisi',
@@ -61,8 +84,47 @@ class UserController extends Controller
             'email'=> $request->email,
             'password'=> $request->password,
         ];
-        registration::create($data);
-        return redirect()->to('customer');
+        customer::create($data);
+        return redirect()->route('customer');
+    }
+
+    public function resto_store(Request $request){
+        Session::flash('nama_resto', $request->nama_resto);
+        Session::flash('kategori', $request->kategori);
+        Session::flash('email', $request->email);
+        Session::flash('no_telp', $request->no_telp);
+        Session::flash('alamat', $request->alamat);
+        Session::flash('password', $request->password);
+
+        $request->validate([
+            'nama_resto' => 'required|string|max:255',
+            'kategori' => 'required|string|max:255',
+            'email' => 'required|email|unique:restaurants,email|max:255',
+            'no_telp' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+            'password' => 'required|string|min:8',
+        ], [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.unique' => 'Email sudah terdaftar',
+            'nama_resto.required' => 'Nama restoran wajib diisi',
+            'kategori.required' => 'Kategori wajib diisi',
+            'no_telp.required' => 'Nomor telepon wajib diisi',
+            'alamat.required' => 'Alamat wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password harus memiliki minimal 8 karakter',
+        ]);
+
+        $data = [
+            'nama_resto'=> $request->nama_resto,
+            'kategori'=> $request->kategori,
+            'email'=> $request->email,
+            'no_telp'=> $request->no_telp,
+            'alamat'=> $request->alamat,
+            'password'=> $request->password,
+        ];
+        restaurant::create($data);
+        return redirect()->route('restaurant');
     }
 
     public function check(Request $request){
@@ -71,23 +133,18 @@ class UserController extends Controller
             'password' => 'required',
         ]);
     
-        $user = registration::where('email', $request->email)->first();
+        $userRestaurant = restaurant::where('email', $request->email)->first();
+        $userCustomer = customer::where('email', $request->email)->first();
         
-        if (!$user || $request->password !== $user->password){
-            return redirect()->back()->withErrors(['login' => 'Invalid email or password']);
+        if (($userRestaurant && $request->password === $userRestaurant->password)) {
+            $user = $userRestaurant;
+            return redirect()->to('restaurant')->with('success', 'Login berhasil!');
+        } elseif (($userCustomer && $request->password === $userCustomer->password)) {
+            $user = $userCustomer;
+            return redirect()->to('customer')->with('success', 'Login berhasil!');
+        } else {
+            return redirect()->back()->withErrors(['signin' => 'Invalid email or password']);
         }
-        
-        return redirect()->to('customer')->with('success', 'Login berhasil!');
-    }
-
-    public function apiShowFoods()
-    {
-        $foods = Food::all();
-
-        return response()->json([
-            'message' => 'Daftar makanan berhasil diambil',
-            'data' => $foods,
-        ]);
     }
     
 }

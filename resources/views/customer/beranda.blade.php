@@ -12,20 +12,20 @@
     @include('layout.sidebar')
     <main class="flex-1 bg-white flex flex-col p-10">
         @include('layout.navbar')
-        <section class="flex flex-col space-y-4">
+        <section class="main-section flex flex-col pl-8 bg-fixed bg-no-repeat bg-right-top" style="background-image: url('foto/background.JPG'); background-size: auto 110%;">
             <h1 class="text-4xl text-gray-700 p-15"><b>What would you like to order</b></h1>
             <div class="flex gap-6 mb-4">
                 <button class="flex flex-col items-center bg-white text-gray-600 w-20 h-36 rounded-full shadow-md hover:bg-orange-500 hover:text-white transition duration-300">
                     <img src="{{ asset('foto/burger.JPG') }}" class="w-full h-auto mb-2 rounded-full p-1">
-                    <h4 class="text-sm">Burger</h4>
+                    <h4 class="text-sm">Fast Food</h4>
                 </button>
                 <button class="flex flex-col items-center bg-white text-gray-600 w-20 h-36 rounded-full shadow-md hover:bg-orange-500 hover:text-white transition duration-300">
                     <img src="{{ asset('foto/donut.JPG') }}" class="w-full h-auto mb-2 rounded-full p-1">
-                    <h4 class="text-sm">Donut</h4>
+                    <h4 class="text-sm">Sweets</h4>
                 </button>
                 <button class="flex flex-col items-center bg-white text-gray-600 w-20 h-36 rounded-full shadow-md hover:bg-orange-500 hover:text-white transition duration-300">
                     <img src="{{ asset('foto/pizza.JPG') }}" class="w-full h-auto mb-2 rounded-full p-1">
-                    <h4 class="text-sm">Pizza</h4>
+                    <h4 class="text-sm">Italian</h4>
                 </button>
                 <button class="flex flex-col items-center bg-white text-gray-600 w-20 h-36 rounded-full shadow-md hover:bg-orange-500 hover:text-white transition duration-300">
                     <img src="{{ asset('foto/mexican.JPG') }}" class="w-full h-auto mb-2 rounded-full p-1">
@@ -66,7 +66,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-orange-100 rounded-xl shadow-lg overflow-hidden flex flex-col">
+                <a href="{{ url('product_by_resto') }}">
+                <div class="bg-orange-100 rounded-xl shadow-lg overflow-hidden flex flex-col" >
                     <img src="{{ asset('foto/mcd.JPG') }}" class="w-full h-auto">
                     <div class="p-4">
                         <h3 class="text-lg">McDonalds</h3>
@@ -77,7 +78,7 @@
                             <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">FAST FOOD</span>
                         </div>
                     </div>
-                </div>
+                </div></a>
                 <div class="bg-orange-100 rounded-xl shadow-lg overflow-hidden flex flex-col">
                     <img src="{{ asset('foto/burgerking.JPG') }}" class="w-full h-auto">
                     <div class="p-4">

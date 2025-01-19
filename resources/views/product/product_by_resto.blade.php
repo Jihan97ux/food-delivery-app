@@ -13,10 +13,8 @@
     <main class="flex-1 bg-white p-8">
         @include('layout.navbar')
         <section class="main-section flex flex-col pl-8 bg-fixed bg-no-repeat bg-right-top" style="background-image: url('foto/background.JPG'); background-size: auto 110%;">
-            <h1 class="text-[40px] text-black/80"><b>Featured Restaurant</b></h1>
-        
-            <div class="restaurant-temp grid gap-5 md:grid-cols-2 mb-10 mt-5">
-                <img src="{{ asset('foto/mcd1.JPG') }}" class="w-1/3 h-auto rounded-2xl shadow-md">
+            <div class="restaurant-temp grid gap-1 md:grid-cols-2 mb-10">
+                <img src="{{ asset('foto/mcd1.JPG') }}" style="width: 70%; height: auto;" class="rounded-2xl shadow-md">
                 <div class="restaurant-info flex flex-col p-5">
                     <h3 class="mb-0">McDonalds</h3>
                     <p class="mt-1 text-sm text-gray-500">10-15 mins</p>
@@ -27,11 +25,11 @@
                     </div>
                 </div>
             </div>
-            <h4 class="text-[24px] text-black/80 mt-15"><b>Featured Restaurant</b></h4>
+            <h4 class="text-[22px] text-black/80"><b>Suggestion</b></h4>
             <div class="foods grid gap-5 md:grid-cols-2 lg:grid-cols-4 mt-5">
                 <!-- Food Card 1 -->
                 <div class="food-card bg-orange-100 rounded-2xl shadow-md overflow-hidden flex flex-col">
-                    <img src="{{ asset('foto/kfc.JPG') }}" class="w-full h-auto">
+                    <img src="{{ asset('foto/chicken_burger.JPG') }}" class="w-full h-auto">
                     <div class="food-info p-5">
                         <div class="info-harga flex justify-between">
                             <h3 class="text-sm">Chicken Burger</h3>
@@ -42,7 +40,7 @@
                 </div>
                 <!-- Food Card 2 -->
                 <div class="food-card bg-orange-100 rounded-2xl shadow-md overflow-hidden flex flex-col">
-                    <img src="{{ asset('foto/subway.JPG') }}" class="w-full h-auto">
+                    <img src="{{ asset('foto/french_fries.JPG') }}" class="w-full h-auto">
                     <div class="food-info p-5">
                         <div class="info-harga flex justify-between">
                             <h3 class="text-sm">Fried Fries</h3>
@@ -53,7 +51,7 @@
                 </div>
                 <!-- Food Card 3 -->
                 <div class="food-card bg-orange-100 rounded-2xl shadow-md overflow-hidden flex flex-col">
-                    <img src="{{ asset('foto/mcd.JPG') }}" class="w-full h-auto">
+                    <img src="{{ asset('foto/happy_meal.JPG') }}" class="w-full h-auto">
                     <div class="food-info p-5">
                         <div class="info-harga flex justify-between">
                             <h3 class="text-sm">Happy Meal</h3>
@@ -64,7 +62,7 @@
                 </div>
                 <!-- Food Card 4 -->
                 <div class="food-card bg-orange-100 rounded-2xl shadow-md overflow-hidden flex flex-col">
-                    <img src="{{ asset('foto/burgerking.JPG') }}" class="w-full h-auto">
+                    <img src="{{ asset('foto/happy_meal.JPG') }}" class="w-full h-auto">
                     <div class="food-info p-5">
                         <div class="info-harga flex justify-between">
                             <h3 class="text-sm">Fried Fries</h3>

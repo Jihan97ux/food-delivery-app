@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class registration extends Model
+class customer extends Model
 {
     protected $fillable = ['nama_depan', 'nama_belakang', 'tanggal_lahir', 'email', 'password'];
-    protected $table = 'registration';
+    protected $table = 'customers';
     public $timestamps = false;
 }

@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registration', function (Blueprint $table) {
-            $table->string('nama_depan');
-            $table->string('nama_belakang');
-            $table->date('tanggal_lahir');
-            $table->string('email')->unique();
-            $table->string('password', 12);
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registration');
+        Schema::dropIfExists('products');
     }
 };

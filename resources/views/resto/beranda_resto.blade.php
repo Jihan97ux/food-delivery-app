@@ -14,7 +14,7 @@
         @include('layout.navbar')
         <section class="flex flex-col space-y-10">
             <!-- Header -->
-            <h1 class="text-4xl text-gray-800 font-bold">Welcome Back, Pizza Hut Restaurant</h1>
+            <h1 class="text-4xl text-gray-800 font-bold">Welcome Back, McDonalds</h1>
             
             <!-- Total Profit Card -->
             <div class="w-72 p-10 bg-white rounded-lg shadow-xl border border-gray-200 relative">

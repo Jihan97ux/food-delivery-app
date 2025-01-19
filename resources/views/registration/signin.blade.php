@@ -10,7 +10,7 @@
     <div class="container flex justify-center items-center px-4">
         <div class="bg-white rounded-lg shadow-lg p-8 w-96 text-center">
             <h2 class="text-orange-500 text-xl font-semibold mb-6">Welcome to Food For Everyone!</h2>
-            <form action='{{ url('/signin') }}' method='post'>
+            <form action='{{ url('signin') }}' method='POST'>
                 @csrf
                 <div class="mb-4">
                 <input type="email" placeholder="E-mail" name='email' value="{{ old('email') }}" id="email"
@@ -26,7 +26,8 @@
                     <span class="text-red-500 text-sm">{{ $errors->first('password') }}</span>
                 @endif
                 </div>
-                <p class="text-sm text-gray-600 mb-4"><a href="{{ url('/') }}" class="text-orange-500 hover:underline">forgot password?</a></p>
+                <p class="text-sm text-gray-600 mb-4"><a href="{{ url('role') }}" class="text-orange-500 hover:underline">forgot password?</a></p>
+                <p class="text-sm text-gray-600 mb-4"><a href="{{ url('role') }}" class="text-orange-500 hover:underline">SIGN UP</a></p>
                 <button type="submit"
                     class="w-full bg-orange-500 text-white py-2 rounded-full font-medium hover:bg-orange-600 transition">
                     SIGN IN
